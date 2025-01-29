@@ -4,7 +4,7 @@ This tool analyzes how DeepSeek's `R1` (in its 7B parameter variant, run locally
 sensitive questions.
 
 In addition to basic analysis, it uses a trivial prompt-based jailbreak technique to bypass the model's built-in alignment-censorship:
-both demonstrating how weak the model's underlying model's censorship/alignment is, and showing some interesting patterns.
+both demonstrating how weak the model's underlying censorship/alignment is, and showing some interesting patterns.
 
 ## Prerequisites
 
