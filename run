@@ -6,15 +6,20 @@ help() {
     echo "Usage: ./run [OPTIONS]"
     echo
     echo "Options:"
-    echo "  --help      Show this help message"
-    echo "  --short     Run a quick test with 3 questions (one from each category)"
-    echo "  --output    Specify output file (default: results.txt)"
+    echo "  --help        Show this help message"
+    echo "  --short       Run a quick test with 3 questions (one from each category)"
+    echo "  --output      Specify output file (default: results.txt)"
+    echo "  --censored    Run only censored topics"
+    echo "  --borderline  Run only borderline topics"
+    echo "  --uncensored  Run only uncensored topics"
     echo
     echo "Examples:"
     echo "  ./run                           # Run full analysis"
     echo "  ./run --short                   # Run quick test"
     echo "  ./run --output custom.txt       # Save results to custom.txt"
     echo "  ./run --short --output test.txt # Quick test with custom output"
+    echo "  ./run --censored --borderline   # Run only censored and borderline topics"
+    echo "  ./run --uncensored --short      # Quick test of uncensored topics only"
 }
 
 # Show help if requested

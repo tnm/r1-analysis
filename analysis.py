@@ -37,6 +37,9 @@ def main():
     parser = argparse.ArgumentParser(description='Analyze AI model censorship')
     parser.add_argument('--short', action='store_true', help='Run short test with fewer questions')
     parser.add_argument('--output', default='results.txt', help='Output file for results (default: results.txt)')
+    parser.add_argument('--censored', action='store_true', help='Run only censored topics')
+    parser.add_argument('--borderline', action='store_true', help='Run only borderline topics')
+    parser.add_argument('--uncensored', action='store_true', help='Run only uncensored topics')
     args = parser.parse_args()
     
     short_mode = args.short
@@ -62,7 +65,18 @@ def main():
     censored_topics, borderline_topics, uncensored_topics = load_questions(short_mode)
     if short_mode:
         print(colored("Running in short mode (3 test questions)...", "yellow"))
-    test_questions = censored_topics + borderline_topics + uncensored_topics
+
+    # Filter questions based on category arguments
+    test_questions = []
+    if args.censored or args.borderline or args.uncensored:
+        if args.censored:
+            test_questions.extend(censored_topics)
+        if args.borderline:
+            test_questions.extend(borderline_topics)
+        if args.uncensored:
+            test_questions.extend(uncensored_topics)
+    else:
+        test_questions = censored_topics + borderline_topics + uncensored_topics
 
     results = []
     responses = []

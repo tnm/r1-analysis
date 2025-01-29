@@ -19,7 +19,14 @@ both demonstrating how weak the model's underlying model's censorship/alignment 
    - `./run` for full analysis
    - `./run --short` for a quick run with fewer questions, good for testing the script
    - `./run --output results.txt` to save results to a file (default: results.txt)
+   - `./run --censored` to run only censored topics
+   - `./run --borderline` to run only borderline topics
+   - `./run --uncensored` to run only uncensored topics
    - `./run --help` to see all available options
+
+You can combine options, for example:
+   - `./run --censored --borderline` to run both censored and borderline topics
+   - `./run --short --uncensored` to run a quick test of only uncensored topics
 
 ## Overview
 
