@@ -90,7 +90,7 @@ the larger variants of r1 would of course also be fruitful.
 
 The program provides real-time feedback and logs responses as it tests each question.
 
-A sample run with results is provided in `sample-results.txt`. Your results may vary slightly due to the non-deterministic nature of the model.
+A sample run with results is provided in `sample-results.txt`. Your results will vary due to the non-deterministic nature of the model.
 
 
 ## Example Output
