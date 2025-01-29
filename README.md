@@ -15,7 +15,8 @@ both demonstrating how weak the model's underlying censorship/alignment is, and 
 
 1. Open your terminal
 2. Navigate to this directory
-3. Run the analysis with options:
+3. There's a `run` script that does everything, including installing and using `uv` (which you should be using!). If you don't want that, you can just run the Python script directly too.
+4. Run the analysis with options:
    - `./run` for full analysis
    - `./run --short` for a quick run with fewer questions, good for testing the script
    - `./run --output results.txt` to save results to a file (default: results.txt)
