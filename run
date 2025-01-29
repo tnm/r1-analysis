@@ -1,0 +1,55 @@
+#!/bin/bash
+
+help() {
+    echo "AI Censorship Analysis Tool"
+    echo
+    echo "Usage: ./run [OPTIONS]"
+    echo
+    echo "Options:"
+    echo "  --help      Show this help message"
+    echo "  --short     Run a quick test with 3 questions (one from each category)"
+    echo "  --output    Specify output file (default: results.txt)"
+    echo
+    echo "Examples:"
+    echo "  ./run                           # Run full analysis"
+    echo "  ./run --short                   # Run quick test"
+    echo "  ./run --output custom.txt       # Save results to custom.txt"
+    echo "  ./run --short --output test.txt # Quick test with custom output"
+}
+
+# Show help if requested
+if [[ "$1" == "--help" ]]; then
+    help
+    exit 0
+fi
+
+# Make script executable
+chmod +x "$0"
+
+# Check if uv is installed
+if ! command -v uv &> /dev/null; then
+    echo "The uv package installer is required but not installed."
+    read -p "Would you like to install uv? (y/n) " choice
+    case "$choice" in 
+        y|Y|yes|YES ) 
+            echo "Installing uv package installer..."
+            curl -LsSf https://astral.sh/uv/install.sh | sh
+            ;;
+        * ) 
+            echo "Cannot continue without uv. Exiting..."
+            exit 1
+            ;;
+    esac
+fi
+
+# Use uv to create venv and install dependencies
+echo "Setting up Python environment..."
+uv venv
+source .venv/bin/activate
+
+echo "Installing required packages..."
+uv pip install requests pandas termcolor
+
+echo "Starting analysis..."
+# Pass all arguments to Python script
+python analysis.py "$@" 
